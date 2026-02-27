@@ -6,33 +6,35 @@
 
     <meta charset="UTF-8">
 
-    <title>3D Heart - Perfect Meteor Sky</title>
+    <title>3D Heart Galaxy - Surprise</title>
 
     <style>
 
-        body { 
-
-            margin: 0; 
-
-            overflow: hidden; 
-
-            background: linear-gradient(to bottom, #000000 0%, #050b1a 40%, #1a2a4a 70%, #4a1a4a 100%); 
-
-            font-family: sans-serif; 
-
-        }
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
         canvas { display: block; }
 
-        #status {
+        
 
-            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+        /* MÀN HÌNH CHÀO ĐỂ KÍCH HOẠT NHẠC */
 
-            color: #ff4d4d; font-size: 13px; letter-spacing: 2px; z-index: 10;
+        #overlay {
 
-            text-shadow: 0 0 10px #ff2121; opacity: 0.8; text-align: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+
+            background: rgba(0, 0, 0, 0.9);
+
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+
+            z-index: 1000; cursor: pointer; transition: opacity 1s ease;
 
         }
+
+        #overlay h2 { color: #ff4d4d; text-shadow: 0 0 15px #ff2121; letter-spacing: 5px; }
+
+        #overlay p { color: white; font-size: 14px; opacity: 0.6; margin-top: 20px; }
+
+
 
         #my-photo {
 
@@ -54,9 +56,25 @@
 
 
 
-    <div id="status">NHẤN VÀO KHỐI TIM ĐỂ XEM ẢNH</div>
+    <div id="overlay" onclick="startSurprise()">
+
+        <h2>CLICK ĐỂ MỞ QUÀ ❤️</h2>
+
+        <p>(Âm thanh sẽ được bật tự động)</p>
+
+    </div>
+
+
 
     <img id="my-photo" src="1.jpg">
+
+
+
+    <audio id="bg-music" loop>
+
+        <source src="tt.mp3" type="audio/mpeg">
+
+    </audio>
 
 
 
@@ -78,22 +96,6 @@
 
 
 
-        // 1. NGÔI SAO NỀN (Phát sáng cố định, không nhấp nháy)
+        // 1. NGÔI SAO NỀN
 
-        const starCount = 1200;
-
-        const starGeo = new THREE.BufferGeometry();
-
-        const starPos = new Float32Array(starCount * 3);
-
-        for (let i = 0; i < starCount; i++) {
-
-            starPos[i*3] = (Math.random()-0.5)*150;
-
-            starPos[i*3+1] = (Math.random()-0.5)*150;
-
-            starPos[i*3+2] = (Math.random()-0.5)*150;
-
-        }
-
-        st
+        const starGeo = new THREE.BufferGeom
